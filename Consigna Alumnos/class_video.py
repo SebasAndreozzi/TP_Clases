@@ -17,22 +17,35 @@ class Video:
         print(f"Vistas: {self.vistas}")
         print(f"Duración: {self.tiempo} segundos")
         print(f"URL de YouTube: {self.url_youtube}")
-        print(f"Fecha de Lanzamiento: {self.fecha_lanzamiento.strftime("%d-%m-%Y")}")
+        #print(f"Fecha de Lanzamiento: {self.fecha_lanzamiento.strftime("%d-%m-%Y")}")
+        print(f"Fecha de Lanzamiento: {self.fecha_lanzamiento}")
+        print(f"Seción: {self.sesion}")
+        print(f"Colaborador: {self.colaborador}")
+        print(f"Código URL: {self.codigo_url}")
         print("*"*30)
 
     def dividir_titulo(self):
         #Debe setear el atributo sesion y colaborador con los datos obtenidos del 
         #titulo del video
+        title_parts = (self.titulo).split("|")
+        self.sesion = int(title_parts[1].split("#")[1].strip())
+        self.colaborador = title_parts[0]
         pass
     
     def obtener_codigo_url(self):
         #Debe setear el atributo codigo_url con el codigo obtenido del atributo url_youtube
         #Por ej: si la url es https://www.youtube.com/watch?v=nicki13 
         #el codigo seria nicki13
+        codigo = (self.url_youtube).split("=")
+
+        self.codigo_url = codigo[1]
         pass
     
     def formatear_fecha(self):
         #Necesitamos que la fecha de lanzamiento sea un objeto de la clase datetime (investigar).
         #Para ello deberán dividir la fecha (en formato string) en dia, mes y año y a partir de 
-        #esos datos, crear la nueva fecha. 
+        #esos datos, crear la nueva fecha.
+        self.fecha_lanzamiento = datetime.strptime(self.fecha_lanzamiento, "%Y-%m-%d")
+
+        self.fecha_lanzamiento = datetime.strftime(self.fecha_lanzamiento, "%d-%m-%Y")
         pass
