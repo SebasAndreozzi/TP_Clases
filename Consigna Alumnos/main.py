@@ -25,7 +25,7 @@ parametros necesarios para lograr el objetivo y mantener independencia de códig
 from class_video import *
 from data import *
 from video_generales import *
-from Input import get_string
+from Input import *
 
 message_a = "A. NORMALIZAR OBJETOS"
 message_b = "B. MOSTRAR TEMAS"
@@ -34,7 +34,7 @@ message_d = "D. PROMEDIO DE VISTAS"
 message_e = "E. MAXIMA REPRODUCCION"
 message_f = "F. BUSQUEDA POR CODIGO"
 message_g = "G. LISTAR POR COLABORADOR"
-message_h = "H. LISTAR POR MESS"
+message_h = "H. LISTAR POR MES"
 message_i = "I. SALIR"
 
 message_abc = f"{message_a}\n{message_b}\n{message_c}\n"
@@ -50,6 +50,14 @@ message_input_miss = "No ingresó una opción valida. Intente de nuevo."
 message_input_retry = "Agotó el número de reintentos. Vuelva a iniciar."
 
 message_input_no_a = "Primero debe normalizar orbjetos (opción A)"
+
+message_input_g = "Ingrese el nombre de un/a colaborador/a: "
+message_error_g = "No se encontró al colaborador/a"
+
+message_input_h = "Ingrese el mes de lanzamiento: "
+message_miss_h = "Ingrese el mes de lanzamiento(el numero debe estar entre 1 y 12): "
+message_error_h = "Agotó el número de reintentos. Vuelva a iniciar."
+message_not_found_h = "Ningúna colaboración se estrenó ese mes"
 
 entry_flag = False
 
@@ -67,6 +75,7 @@ while True:
                 Video.formatear_fecha(lista_videos[i])
 
             entry_flag = True   
+            
         case "B":
             if entry_flag:
                 for i in range(len(lista_videos)):
@@ -74,6 +83,7 @@ while True:
             else:
                 print(message_input_no_a)
                 pass
+
         case "C":
             if entry_flag:
                 min_to_max(lista_videos)
@@ -90,6 +100,7 @@ while True:
             else:
                 print(message_input_no_a)
                 pass
+
         case "E":
             if entry_flag:
                 max_list = max_views_list(lista_videos)
@@ -98,26 +109,54 @@ while True:
             else:
                 print(message_input_no_a)
                 pass
+
         case "F":
             if entry_flag:
-                pass
+                code_list = filter_code(lista_videos, "nick")
+                
+                for i in range(len(code_list)):
+                    Video.mostrar_tema(code_list[i])
             else:
                 print(message_input_no_a)
                 pass
+
         case "G":
             if entry_flag:
-                pass
+                colab = str(input(message_input_g))
+
+                colab_list = filter_colab(lista_videos, colab)
+
+                if len(colab_list) == 0:
+                    print(message_error_g)
+                else:
+                    for i in range(len(colab_list)):
+                        Video.mostrar_tema(colab_list[i])
+
             else:
                 print(message_input_no_a)
                 pass
+
         case "H":
             if entry_flag:
-                pass
+                entry_month = get_int(message_input_g, message_miss_h, 1, 12, 3)
+
+                if entry_month == None:
+                    print(message_error_h)
+                else:
+                    entry_month_list = release_month_list(lista_videos, entry_month)
+                    
+                    if len(entry_month_list) == 0:
+                        print(message_not_found_h)
+                    else:
+                        for i in range(len(entry_month_list)):
+                            Video.mostrar_tema(entry_month_list[i])
             else:
                 print(message_input_no_a)
                 pass
+
         case "I":
             break
+
         case _:
             print(message_input_miss)
             pass

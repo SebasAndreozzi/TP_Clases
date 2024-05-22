@@ -1,4 +1,6 @@
+from datetime import datetime
 from class_video import *
+from strings_generales import *
 ###ORDENAR MIN TO MAX
 def min_to_max(lista:list):
     for i in range(len(lista)):
@@ -42,3 +44,36 @@ def max_views_list(list:list) -> list:
     
     return video_positions
         
+def filter_code(list:list, code:str) -> list:
+    result = []
+
+    for i in range(len(list)):
+        url_code = list[i].codigo_url
+
+        if compare_string(url_code, code):
+            result.append(list[i])
+    
+    return result
+
+def filter_colab(list:list, entry:str) -> list:
+    entry = entry.upper()
+    result = []
+
+    for i in range(len(list)):
+        colab = (list[i].colaborador).upper()
+
+        if compare_string(colab, entry):
+            result.append(list[i])
+    
+    return result
+
+def release_month_list(list:list, month:int) -> list:
+    result = []
+
+    for i in range(len(list)):
+        release_date = list[i].fecha_lanzamiento
+        
+        if int(release_date.strftime("%m")) == month:
+            result.append(list[i])
+    
+    return result

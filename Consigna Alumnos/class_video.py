@@ -17,8 +17,7 @@ class Video:
         print(f"Vistas: {self.vistas}")
         print(f"Duración: {self.tiempo} segundos")
         print(f"URL de YouTube: {self.url_youtube}")
-        #print(f"Fecha de Lanzamiento: {self.fecha_lanzamiento.strftime("%d-%m-%Y")}")
-        print(f"Fecha de Lanzamiento: {self.fecha_lanzamiento}")
+        print(f"Fecha de Lanzamiento: {self.fecha_lanzamiento.strftime('%d-%m-%Y')}")
         print(f"Seción: {self.sesion}")
         print(f"Colaborador: {self.colaborador}")
         print(f"Código URL: {self.codigo_url}")
@@ -45,7 +44,8 @@ class Video:
         #Necesitamos que la fecha de lanzamiento sea un objeto de la clase datetime (investigar).
         #Para ello deberán dividir la fecha (en formato string) en dia, mes y año y a partir de 
         #esos datos, crear la nueva fecha.
-        self.fecha_lanzamiento = datetime.strptime(self.fecha_lanzamiento, "%Y-%m-%d")
 
-        self.fecha_lanzamiento = datetime.strftime(self.fecha_lanzamiento, "%d-%m-%Y")
+        year_month_day_list = self.fecha_lanzamiento.split("-")
+
+        self.fecha_lanzamiento = (datetime(int(year_month_day_list[0]),int(year_month_day_list[1]),int(year_month_day_list[2])))
         pass
