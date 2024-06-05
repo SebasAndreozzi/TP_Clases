@@ -1,4 +1,4 @@
-# TP Programación Orientada a Objetos
+# TP Clases
 
 ## Consigna
 
