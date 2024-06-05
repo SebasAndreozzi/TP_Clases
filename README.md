@@ -1,6 +1,6 @@
 # TP Programación Orientada a Objetos
 
-##Consigna
+## Consigna
 
 1. IMPLEMENTAR LOS METODOS VACIOS DE LA CLASE VIDEO
 
@@ -19,7 +19,7 @@ ese colaborador.
 H. LISTAR POR MES: el usuario ingresa un mes, y se deberán listar todos los temas lanzados en ese mes (sin importar el año)
 I. SALIR 
 
-##A tener en cuenta 
+## A tener en cuenta 
 . Las opciones BCDEFG no serán accesibles si no se normalizan previamente los datos.
 . Todas las opciones tienen que estar resueltas en metodos de la clase Video que reciban una lista de videos sumado a los
 parametros necesarios para lograr el objetivo y mantener independencia de código.
