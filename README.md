@@ -29,5 +29,6 @@
 
 ## A tener en cuenta 
 . Las opciones BCDEFG no serán accesibles si no se normalizan previamente los datos.
+
 . Todas las opciones tienen que estar resueltas en metodos de la clase Video que reciban una lista de videos sumado a los
 parametros necesarios para lograr el objetivo y mantener independencia de código.
